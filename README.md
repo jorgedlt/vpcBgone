@@ -12,7 +12,11 @@
 
 The issue is AWS vps's can not be deleted if dependencies are there, this is true of heavy AWS link EC2, RDS, LAMDBA's etc, or anything which has an ENI. However, this is where several post around the web gets it wrong, as simply deleted all of the ENI will NOT allow one to then delete the VPC directly as it still has many dependencies. Here in my project's I've list the most common in my cases. However there are more (which I will need to add later, like egress-only-gateway, etc.)
 
-After much trial and effort, I settled on the following sequance, although it is not an officla AWS sequence, I know it to works.
+After much trial and effort, I settled on the following sequance, although it is not an officla AWS sequence, I know it to works. Here is the catch; many of the depencies CAN NOT, if the are DEFAULT, be deleted. Not from the CLI, and not from the WEBGUI (unless the delete all depencies check-box is checked). This seems to cause much confussion, not only to me, but others as well. Now once all of the detelateable items have been delete, then the VPC can be deleted, and it will delete all of the undeletable default items with it. Leaving one with a clean AWS once again.
+
+Also, at the time of the this being (aws --version aws-cli/1.11.117 Python/2.7.10 Darwin/16.6.0 botocore/1.5.80 09JULY2017) there is no single global AWSCLI equvialnce to vpcshowall or vpczorchall.
+
+I wrote this my use, and is a work in progress. /Jorge
 
 ## 1. Kill EC2 (and RDS ...) 
 … use ec2kill for now
