@@ -4,12 +4,12 @@
 
 # How to delete a VPC with --all-dependencies                         
 
-### Really Good cli article - [Link](https://github.com/miztiik/AWS-Demos)
+#### Really Good cli article - [Link](https://github.com/miztiik/AWS-Demos)
 
-### A similar approach using HashiCorp'sTeraForm - [Link](https://linuxacademy.com/howtoguides/posts/show/topic/13922-a-complete-aws-environment-with-terraform
+#### A similar approach using HashiCorp'sTeraForm - [Link](https://linuxacademy.com/howtoguides/posts/show/topic/13922-a-complete-aws-environment-with-terraform
 )
 
-### How to Destroy (Tear Down) an AWS EC2 Environment - [Link](https://www.build-business-websites.co.uk/assets/it.assets/infrastructure.assets/ec2.assets/ec2.environment.destroy.howto.html)
+#### How to Destroy (Tear Down) an AWS EC2 Environment - [Link](https://www.build-business-websites.co.uk/assets/it.assets/infrastructure.assets/ec2.assets/ec2.environment.destroy.howto.html)
 
 ## 1. Kill EC2 (and RDS ...) 
 … use ec2kill for now
