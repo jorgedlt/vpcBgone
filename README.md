@@ -1,17 +1,15 @@
 ##### vpcBgone README.md file
 ### AWS CLI Creates VPC inventory and Optionally DELETES all of it
-09 JULY 2017 - based on Private notes - https://docs.google.com/document/d/1Q8ieik-aJk8XjOsY0FIblK31kbcligHnIggdvnSeqss
+09 JULY 2017 - Based on [Private Notes](https://docs.google.com/document/d/1Q8ieik-aJk8XjOsY0FIblK31kbcligHnIggdvnSeqss)
 
 # How to delete a VPC with --all-dependencies                         
 
-### Really Good cli article
-https://github.com/miztiik/AWS-Demos
+### Really Good cli article - [Link](https://github.com/miztiik/AWS-Demos)
 
-### A similar approach using HashiCorp'sTeraForm - 
-https://linuxacademy.com/howtoguides/posts/show/topic/13922-a-complete-aws-environment-with-terraform
+### A similar approach using HashiCorp'sTeraForm - [Link](https://linuxacademy.com/howtoguides/posts/show/topic/13922-a-complete-aws-environment-with-terraform
+)
 
-### How to Destroy (Tear Down) an AWS EC2 Environment
-https://www.build-business-websites.co.uk/assets/it.assets/infrastructure.assets/ec2.assets/ec2.environment.destroy.howto.html
+### How to Destroy (Tear Down) an AWS EC2 Environment - [Link](https://www.build-business-websites.co.uk/assets/it.assets/infrastructure.assets/ec2.assets/ec2.environment.destroy.howto.html)
 
 ## 1. Kill EC2 (and RDS ...) 
 … use ec2kill for now
