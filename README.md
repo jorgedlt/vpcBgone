@@ -28,7 +28,7 @@ https://www.build-business-websites.co.uk/assets/it.assets/infrastructure.assets
     Security Group: [ sg-d1d9cfb8 ] SG Name: [ SecurityGroupforSSHAccess ]
     TAG: [ SSH-vpc08-rds01 ] VPC: [ vpc-61334e08 ]
 
-
+example here
 
  	aws ec2 delete-security-group --group-id sg-551f0f3c
 
@@ -36,7 +36,8 @@ https://www.build-business-websites.co.uk/assets/it.assets/infrastructure.assets
  
  #### the other default sg need not be deleted by hand, the default sg will be purged by the removal of the vpc later...
  
- ### ----
+----
+additional steps not needed, but ducumented all the same.
 
 #### aws ec2 describe-security-groups --filters Name=vpc-id,Values=vpc-b57a8bd3 | grep GroupId | tr -d ' |,|"' | sort | uniq | cut -d':' -f2
 
@@ -45,7 +46,6 @@ aws ec2 revoke-security-group-ingress --group-id sg-6fc4d206 \   # not is needed
 
 aws ec2 revoke-security-group-egress --group-id sg-6fc4d206 \
  --protocol all --port -1 --cidr 0.0.0.0/0
-
 
 ## 3. Get Subnets
 #### aws ec2 describe-subnets --filters Name=vpc-id,Values <VPC-ID>
@@ -76,18 +76,17 @@ aws ec2 describe-network-acls --filters Name=vpc-id,Values=vpc-fd3b4794 | grep N
      aws ec2 delete-internet-gateway --internet-gateway-id=igw-424bc02b  # delte is not need for VPC removal
 
 ## 6. Get Route Table 
-#### aws ec2 describe-route-tables --filters Name=vpc-id,Values=${vpc_value}
+#### aws ec2 describe-route-tables --filters Name=vpc-id,Values=<vpc-id>
 
 aws ec2 describe-route-tables --filters Name=vpc-id,Values=vpc-fd3b4794 | grep RouteTableId | tr -d ' |,|"' | sort | uniq | cut -d':' -f2
 
-aws ec2 delete-route-table --route-table-id rtb-949dd3fd # cannot delete IF main
+	aws ec2 delete-route-table --route-table-id rtb-949dd3fd
+	
+	   
+## 7. Addtional Resources and Notes
+#### aws ec2 delete-vpc --vpc-id=<vpc-id>
 
-
-
-
-## Finally 
-#### aws ec2 delete-vpc --vpc-id ${vpc_value}	aws ec2 delete-vpc --vpc-id vpc-fd3b4794
-
+	aws ec2 delete-vpc --vpc-id vpc-fd3b4794
 
 ----
 
@@ -96,7 +95,7 @@ aws ec2 delete-route-table --route-table-id rtb-949dd3fd # cannot delete IF main
 
 It pays to read the security group before you delete the security group so that you know what you have. Use the below command.
 
-aws ec2 describe-security-groups --group-ids sg-73a99115
+	aws ec2 describe-security-groups --group-ids sg-73a99115
 
 You can use --group-names to provide a list of names if you prefer.
 The below security group cannot be deleted because it still has a default outbound access all areas rule ingress (egress) rule attached to it.
@@ -129,7 +128,7 @@ The below security group cannot be deleted because it still has a default outbou
 	  ]
 	}
 	 
-	The below security can now be deleted. It does not have any ingress rules attached to it.
+The below security can now be deleted. It does not have any ingress rules attached to it.
 	
 	aws ec2 describe-security-groups --group-ids sg-73a99115
 	{
@@ -145,13 +144,3 @@ The below security group cannot be deleted because it still has a default outbou
 	    }
 	  ]
 	}
-
- 
-
-
-
-
-
-
-
-
