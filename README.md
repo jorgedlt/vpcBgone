@@ -6,10 +6,13 @@
 
 #### Really Good cli article - [Link](https://github.com/miztiik/AWS-Demos)
 
-#### A similar approach using HashiCorp'sTeraForm - [Link](https://linuxacademy.com/howtoguides/posts/show/topic/13922-a-complete-aws-environment-with-terraform
-)
+#### A similar approach using HashiCorp'sTeraForm - [Link](https://linuxacademy.com/howtoguides/posts/show/topic/13922-a-complete-aws-environment-with-terraform)
 
 #### How to Destroy (Tear Down) an AWS EC2 Environment - [Link](https://www.build-business-websites.co.uk/assets/it.assets/infrastructure.assets/ec2.assets/ec2.environment.destroy.howto.html)
+
+The issue is AWS vps's can not be deleted if dependencies are there, this is true of heavy AWS link EC2, RDS, LAMDBA's etc, or anything which has an ENI. However, this is where several post around the web gets it wrong, as simply deleted all of the ENI will NOT allow one to then delete the VPC directly as it still has many dependencies. Here in my project's I've list the most common in my cases. However there are more (which I will need to add later, like egress-only-gateway, etc.)
+
+After much trial and effort, I settled on the following sequance, although it is not an officla AWS sequence, I know it to works.
 
 ## 1. Kill EC2 (and RDS ...) 
 … use ec2kill for now
