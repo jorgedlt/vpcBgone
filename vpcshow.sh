@@ -137,5 +137,5 @@ cd $HOME/code/vpcBgone
 }
 
 # echo source ./vpcshow.sh; _vpcview XXXXXXXXX
-# echo source ./vpcshow.sh; _vpckill XXXXXXXXX
-# echo source ./vpcshow.sh; _vpcrest
+# echo source ./vpcshow.sh; vpckill XXXXXXXXX
+# echo source ./vpcshow.sh; vpcrest
