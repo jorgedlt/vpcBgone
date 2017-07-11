@@ -108,3 +108,30 @@ vpckill ()
      #
      aws ec2 delete-vpc --vpc-id "$vpcID"
 }
+
+vpcrest ()
+{
+
+cd $HOME/code/vpc2ec2
+
+rm *.json
+chmod 666 *.pem
+rm *.pem
+
+#
+ _keys=$(aws ec2 describe-key-pairs | grep KeyName \
+  | cut -d':' -f2 | tr -d '"|:| |,')
+
+ echo "deleting ..."
+ for key in $_keys; do
+     echo "${key}"
+     aws ec2 delete-key-pair --key-name "${key}"
+ done
+
+#
+ aws ec2 describe-key-pairs | jq .
+#
+
+cd $HOME/code/vpcBgone
+
+}
