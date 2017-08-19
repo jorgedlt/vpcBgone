@@ -149,3 +149,34 @@ The below security can now be deleted. It does not have any ingress rules attach
 	    }
 	  ]
 	}
+
+----
+
+## Creating a Default VPC
+
+If you delete your default VPC, you can create a new one. You cannot restore a previous default VPC that you deleted, and you cannot mark an existing nondefault VPC as a default VPC. If your account supports EC2-Classic, you cannot use these procedures to create a default VPC in a region that supports EC2-Classic.
+
+When you create a default VPC, it is created with the standard components of a default VPC, including a default subnet in each Availability Zone. You cannot specify your own components. The subnet CIDR blocks of your new default VPC may not map to the same Availability Zones as your previous default VPC. For example, if the subnet with CIDR block 172.31.0.0/20 was created in us-east-2a in your previous default VPC, it may be created in us-east-2b in your new default VPC.
+
+If you already have a default VPC in the region, you cannot create another one.
+
+[AWS DOCS - re-creating a default VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html#create-default-vpc)
+
+### To create a default VPC using the command line
+
+You can use the create-default-vpc AWS CLI command. This command does not have any input parameters.
+
+	aws ec2 create-default-vpc
+
+	{
+	    "Vpc": {
+	        "VpcId": "vpc-3f139646", 
+	        "InstanceTenancy": "default", 
+	        "Tags": [], 
+	        "Ipv6CidrBlockAssociationSet": [], 
+	        "State": "pending", 
+	        "DhcpOptionsId": "dopt-61079b07", 
+	        "CidrBlock": "172.31.0.0/16", 
+	        "IsDefault": true
+	    }
+	}
